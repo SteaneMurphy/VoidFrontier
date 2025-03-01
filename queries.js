@@ -1,4 +1,4 @@
-import { CONFIG } from "./config.js";
+import { CONFIG } from "./utilities.js";
 
 /*
     Registers a new account token for access to the API. Only needs to be run once per account
@@ -54,7 +54,7 @@ export function getAgent()
 
 export function getCurrentWaypoint()
 {
-    const URL = `https://api.spacetraders.io/v2/systems/X1-PS39/waypoints/X1-PS39-A1`
+    const URL = `https://api.spacetraders.io/v2/systems/X1-TQ15/waypoints/X1-TQ15-XZ3F`
 
     fetch(URL, 
         {
@@ -69,7 +69,7 @@ export function getCurrentWaypoint()
     .catch(error => console.log(error.message));
 }
 
-export function listSystems()
+export function getAllSystems()
 {
     const URL = `https://api.spacetraders.io/v2/systems`
 
@@ -84,7 +84,26 @@ export function listSystems()
     .then(response => response.json())
     .then(data => 
         {
-            console.log(data);
+            return data.data;
+        })
+    .catch(error => console.log(error.message));
+}
+
+export function getOneSystem(systemSymbol)
+{
+    const URL = `https://api.spacetraders.io/v2/systems/${systemSymbol}`
+
+    return fetch(URL, 
+        {
+            method: "GET",
+            headers: 
+                {
+                    "Authorization": "Bearer " + CONFIG.AGENT_TOKEN
+                }
+        })
+    .then(response => response.json())
+    .then(data => 
+        {
             return data.data;
         })
     .catch(error => console.log(error.message));
