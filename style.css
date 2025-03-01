@@ -1,0 +1,53 @@
+:root
+{
+    --young-star: rgb(255, 249, 172);
+    --orange-star: orange;
+    --blue-star: blue;
+    --red-star: red;
+    --black-hole: rgb(37, 34, 34);
+    --white-dwarf: white;
+}
+
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+.mainContainer
+{
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+}
+
+.planetContainer
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.planet
+{
+    width: 80px;
+    height: 9vh;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.planetText
+{
+    visibility: hidden;
+    color: red; 
+}
+
+.planet:hover
+{
+    border: 3px solid red;
+}
+
+.planet:hover + .planetText
+{
+    visibility: visible; 
+}

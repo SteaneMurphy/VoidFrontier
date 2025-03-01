@@ -73,7 +73,7 @@ export function listSystems()
 {
     const URL = `https://api.spacetraders.io/v2/systems`
 
-    fetch(URL, 
+    return fetch(URL, 
         {
             method: "GET",
             headers: 
@@ -85,7 +85,7 @@ export function listSystems()
     .then(data => 
         {
             console.log(data);
-            return data;
+            return data.data;
         })
     .catch(error => console.log(error.message));
 }
